@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -14,7 +14,7 @@ const createWindow = (): void => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, '../src/index.html'));
+  mainWindow.loadFile(path.join(__dirname, './index.html'));
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
@@ -34,6 +34,8 @@ app.on('window-all-closed', () => {
   }
 });
 
+
+
 app.on('activate', () => {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
@@ -42,5 +44,8 @@ app.on('activate', () => {
   }
 });
 
+ipcMain.handle('perform-action', (event, ...args) => {
+  console.log('event-evoked');
+})
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.

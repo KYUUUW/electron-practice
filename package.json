@@ -5,11 +5,12 @@
   "description": "My Electron application description",
   "main": "dist/index.js",
   "scripts": {
-    "start": "tsc && electron-forge start",
+    "start": "npm run copy:assets && tsc && electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "eslint --ext .ts ."
+    "lint": "eslint --ext .ts .",
+    "copy:assets": "node ./scripts/copyAssets.js"
   },
   "keywords": [],
   "author": "boba-research",
@@ -52,6 +53,7 @@
     "electron": "10.1.2",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "^2.20.0",
+    "recursive-copy": "^2.0.11",
     "typescript": "^4.0.2"
   },
   "dependencies": {
