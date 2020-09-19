@@ -37,8 +37,7 @@ app.whenReady().then(createWindow);
 //이 파일에는 나머지 앱의 특정 주요 프로세스 코드를 포함시킬 수 있습니다. You can also put them in separate files and require them here.
 ipcMain.handle("get-url", async (event, url) => {
   try {
-    console.log('Get save path');
-    const saveDir = fs.mkdtempSync('b-kiosk');
+    const saveDir = path.resolve(__dirname.replace('app.asar', 'app.asar.unpacked'), '../', 'tmp');
     const savePath = path.resolve(saveDir, `${Math.random().toString(36).substr(2)}.pdf`);
 
     const res = await fetch(url);
@@ -47,7 +46,7 @@ ipcMain.handle("get-url", async (event, url) => {
 
     dest.on('finish', () => {
       childProcess.exec(
-        `./src/SumatraPDF.exe`,
+        `${path.resolve(__dirname.replace('app.asar', 'app.asar.unpacked'), "../bin/SumatraPDF.exe")} ${savePath}`,
         {},
         (error, stdout, stderr) => {
           logger(error);

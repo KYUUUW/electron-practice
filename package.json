@@ -31,11 +31,12 @@
   },
   "build": {
     "win": {
-      "target": "zip",
-      "asar": {
-        "smartUnpack": true,
-        "asarUnpack": ["SumatraPDF.exe"] 
-      }
+      "target": "dir",
+      "asar": true,
+      "asarUnpack": [
+        "./bin/SumatraPDF.exe",
+        "./tmp/test.pdf"
+      ]
     }
   }
 }

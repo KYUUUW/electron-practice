@@ -1,2 +1,12 @@
 node_modules
 dist
+
+# Downloaded PDF
+*.pdf
+!tmp/test.pdf
+
+# Sumatra PDF tmp
+bin/sumatrapdfcache
+
+# log
+*.log
