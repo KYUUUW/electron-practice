@@ -31,7 +31,7 @@
   },
   "build": {
     "win": {
-      "target": "dir",
+      "target": "nsis",
       "asar": true,
       "asarUnpack": [
         "./bin/SumatraPDF.exe",

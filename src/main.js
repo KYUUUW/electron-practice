@@ -52,6 +52,8 @@ ipcMain.handle("get-url", async (event, url) => {
           logger(error);
           logger(stdout);
           logger(stderr);
+
+          fs.unlinkSync(savePath);
         }
       );
     })
