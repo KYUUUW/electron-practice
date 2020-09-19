@@ -2,9 +2,11 @@
   "name": "electron-practice",
   "version": "1.0.0",
   "description": "Windows 10",
-  "main": "main.js",
+  "main": "./src/main.js",
   "scripts": {
     "start": "electron .",
+    "build": "electron-builder",
+    "pack": "electron-builder --dir",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,9 +21,21 @@
   },
   "homepage": "https://github.com/KYUUUW/electron-practice#readme",
   "devDependencies": {
-    "electron": "^10.1.2"
+    "asar": "^3.0.3",
+    "electron": "^10.1.2",
+    "electron-builder": "^22.8.1"
   },
   "dependencies": {
+    "electron-store": "^6.0.0",
     "node-fetch": "^2.6.1"
+  },
+  "build": {
+    "win": {
+      "target": "zip",
+      "asar": {
+        "smartUnpack": true,
+        "asarUnpack": ["SumatraPDF.exe"] 
+      }
+    }
   }
 }
