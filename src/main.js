@@ -36,4 +36,5 @@ app.whenReady().then(createWindow);
 ipcMain.handle('get-path', () => {
   logger(`dirname: ${__dirname}`);
   logger(`cwd: ${process.cwd()}`);
+  logger(`execPath: ${process.execPath}`);
 });
