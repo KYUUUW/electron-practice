@@ -22,6 +22,8 @@ function createWindow() {
   const indexPath = path.resolve(__dirname, "./index.html");
   win.loadFile(indexPath);
 
+  console.log('creating window');
+
   // 개발자 도구를 엽니다.
   win.webContents.openDevTools();
 }
